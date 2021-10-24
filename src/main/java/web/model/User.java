@@ -124,13 +124,8 @@ public class User implements UserDetails {
 
     @Override
     public String toString() {
-        return "Users{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return  name + " " + lastName + ", " +
+                age + " years,  " +  "login: [" + email +
+                "]  password: [" + password + "]  with role >> " + roles;
     }
 }

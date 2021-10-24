@@ -18,16 +18,17 @@ public class RoleDaoImpl implements RoleDao {
         for (Role rol : roles) {
             em.persist(rol);
         }
-//        em.persist(roles.forEach(role -> roles));
+    }
+
+    public Role findRole(Role role) {
+        return em.createQuery("SELECT r FROM Role r WHERE r.name=:name", Role.class)
+                .setParameter("name", role.getName())
+                .getSingleResult();
     }
 
     @Override
-    public Role getRole(Long id) {
-        return em.find(Role.class, id);
+    public List<Role> getAllRoles() {
+        return em.createQuery("SELECT r FROM Role r").getResultList();
     }
-
-    @Override
-    public List <Role> getAllRoles() {
-            return em.createQuery("select r from Role r").getResultList();
-            }
 }
+

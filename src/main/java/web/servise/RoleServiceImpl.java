@@ -5,7 +5,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import web.dao.RoleDao;
 import web.model.Role;
-
 import java.util.List;
 import java.util.Set;
 
@@ -26,12 +25,10 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role getRole(Long id) {
-        return roleDao.getRole(id);
-    }
-
-    @Override
     public List<Role> getAllRoles() {
         return roleDao.getAllRoles();
     }
+
+    @Override
+    public Role findRole(Role role) { return roleDao.findRole(role); }
 }

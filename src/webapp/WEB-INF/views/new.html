@@ -30,8 +30,14 @@ Add new user:
     <input type="text" th:field="*{password}" id="password">
     <br/>
     <br/>
-    <label for="name">Enter role</label>
-    <input type="text" th:field="          " id="roles">
+    <div>
+        <select name="roles" multiple required size="6">
+            <option disabled selected>select role</option>
+            <div th:each="role : ${allRoles}">
+                <option th:text="${role.getName()}" th:value="${role.getName()}" name="roles"/>
+            </div>
+        </select>
+    </div>
     <br/>
     <br/>
     <input type="submit" value=" Add user "/>

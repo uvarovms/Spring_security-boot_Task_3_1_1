@@ -6,9 +6,8 @@ import web.model.Role;
 import web.model.User;
 import web.servise.RoleService;
 import web.servise.UserService;
-
 import javax.annotation.PostConstruct;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -45,7 +44,7 @@ public class DataTableInitialization {
         Role role2 = new Role();
         role2.setName("ROLE_ADMIN");
 
-        Set<Role> setRoles = new HashSet<>();
+        Set<Role> setRoles = new LinkedHashSet<>();
         setRoles.add(role1);
         setRoles.add(role2);
         roleService.addRole(setRoles);

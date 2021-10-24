@@ -2,25 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Table users</title>
+    <title>Admin page</title>
 </head>
 <body>
 Table users:
 <td><a type="button" th:href="@{/logout}"> Logout </a></td>
 <table border="1">
     <tr>
-        <th>Id</th>
-        <th>Full Name</th>
-        <th>Age</th>
-    <tr th:each="user, state : ${listUsers}">
+        <th class="text-center">Id</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Last Name</th>
+        <th class="text-center">Age</th>
+        <th class="text-center">Email</th>
+        <th class="text-center">Roles</th>
+        <th class="text-center">Delete user</th>
+        <th class="text-center">Edit user</th>
+    </tr>
+    <tr class="text-center" th:each="user, state : ${listUsers}">
         <td th:utext="${user.getId()}"></td>
         <td th:utext="${user.getName()}"></td>
         <td th:utext="${user.getLastName()}"></td>
         <td th:utext="${user.getAge()}"></td>
         <td th:utext="${user.getEmail()}"></td>
-        <td th:utext="${user.getPassword()}"></td>
-<!--        <tr th:each="rol, state : ${listRoles}">-->
-<!--        <td th:utext="${rol}"></td></tr>-->
+        <td th:utext="${user.getRoles()}"></td>
         <td>
             <form th:method="DELETE" th:action="@{/admin/{id}(id=${user.getId()})}">
                 <input type="submit" value="Delete"/>
@@ -29,7 +33,7 @@ Table users:
         <td>
             <a type="button" th:href="@{/admin/{id}/edit(id=${user.getId()})}"> Edit current user </a>
         </td>
-        </tr>
-        <td><a type="button" th:href="@{new/}"> Add user </a></td>
+    </tr>
+    <td><a type="button" th:href="@{new/}"> Add new user </a></td>
 </table>
 </body>

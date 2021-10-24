@@ -37,14 +37,12 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User myUser= userDao.getUserByLogin(email);
-        System.out.println("Пришел логин: " + email);
+        User myUser = userDao.getUserByLogin(email);
         if (myUser == null) {
             throw new UsernameNotFoundException("Unknown user: " + email);
         }
         List<GrantedAuthority> roleList = getAuthoritiesEntities(myUser.getRoles());
         org.springframework.security.core.userdetails.User usd = new org.springframework.security.core.userdetails.User(myUser.getEmail(), myUser.getPassword(), roleList);
-        System.out.println("Юзер деталь сервис содержит => " + usd);
         return usd;
     }
 }

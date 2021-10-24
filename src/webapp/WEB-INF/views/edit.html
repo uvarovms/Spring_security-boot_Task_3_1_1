@@ -23,16 +23,22 @@ Edit current user:
     <br/>
     <br/>
     <label for="name">Enter new e-mail</label>
-       <input type="text" th:field="*{email}" id="email">
+    <input type="text" th:field="*{email}" id="email">
     <br/>
     <br/>
     <label for="name">Enter new password</label>
-       <input type="text" th:field="*{password}" id="password">
+    <input type="text" th:field="*{password}" id="password">
     <br/>
     <br/>
-    <label for="name">Enter new role</label>
-    <input type="text" th:field="     " id="roles">
-    <br/>
+    </div>
+    <div>
+        <select name="roles" multiple required size="6">
+            <option disabled selected>select role</option>
+            <div th:each="role : ${allRoles}">
+                <option th:text="${role.getName()}" th:value="${role.getName()}" name="roles"/>
+            </div>
+        </select>
+    </div>
     <br/>
     <input type="submit" value=" Ok ">
 </form>
