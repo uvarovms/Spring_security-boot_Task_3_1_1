@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 import web.dao.UserDao;
 import web.model.User;
+
 import java.util.List;
 
 @Service
@@ -49,7 +50,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userDao.updateUser(user);
+        if (!user.getPassword().equals(userDao.getUser(user.getId()).getPassword())) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            userDao.updateUser(user);
+        }
     }
 }
