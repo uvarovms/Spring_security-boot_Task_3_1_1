@@ -1,5 +1,6 @@
 package web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +9,8 @@ import web.model.User;
 import web.servise.RoleService;
 import web.servise.UserService;
 import java.security.Principal;
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Controller
 public class UserController {
@@ -16,6 +18,7 @@ public class UserController {
     private final UserService userService;
     private final RoleService roleService;
 
+    @Autowired
     public UserController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;

@@ -1,30 +1,32 @@
-package web.config;
+package web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import web.model.Role;
 import web.model.User;
 import web.servise.RoleService;
 import web.servise.UserService;
-import javax.annotation.PostConstruct;
+
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Component
-public class DataTableInitialization {
+@SpringBootApplication
+public class SpringbootMainApp {
 
-    private final UserService userService;
-    private final RoleService roleService;
+    static UserService userService;
+    static RoleService roleService;
 
     @Autowired
-    public DataTableInitialization(UserService userService, RoleService roleService) {
+    public SpringbootMainApp(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
     }
 
-    @PostConstruct
-    private void postConstruct() {
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootMainApp.class, args);
+
         User user1 = new User();
         user1.setName("Anton");
         user1.setLastName("Tikhonov");
@@ -34,7 +36,7 @@ public class DataTableInitialization {
 
         User user2 = new User();
         user2.setName("Sergey");
-        user2.setLastName("Litvinov");
+        user2.setLastName("Lyubov");
         user2.setAge((byte) 35);
         user2.setEmail("2@mail.ru");
         user2.setPassword("222");

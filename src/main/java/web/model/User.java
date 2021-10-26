@@ -126,6 +126,6 @@ public class User implements UserDetails {
     public String toString() {
         return  name + " " + lastName + ", " +
                 age + " years,  " +  "login: [" + email +
-                "]  password: [" + password + "]  with role >> " + roles;
+                "]  password: [ * ]  with role >> " + roles;
     }
 }
